@@ -1,0 +1,62 @@
+<configuration debug="true" packagingData="true" scan="true">
+
+    <!-- use Spring default values -->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <!-- 로그를 콘솔에 출력한다. -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{32} -%msg%n</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+	<!-- logNclash 설정 -->
+	<appender name="logNclash-logger" class="ch.qos.logback.classic.AsyncAppender" >
+		<!-- Logback AsyncAppender 옵션 -->
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>		
+		</filter> 
+		<param name="includeCallerData" value="false" />
+		<param name="queueSize" value="2048" />
+		<param name="neverBlock" value="true" />
+		<param name="maxFlushTime" value="60000" />
+		
+		<!-- Log & Crash logback SDK 의 LogNCrashHttpApender 옵션 -->
+		<appender name="logNCrashHttp" class="com.toast.java.logncrash.logback.LogNCrashHttpAppender" >
+			<param name="appKey" value="XjmXU6qBv6ZYE8pl" />
+			<param name="logSource" value="${SERVER_MODE}" />
+			<param name="version" value="1.0.0" />
+			<param name="logType" value="info" />
+			<param name="debug" value="false" />
+			<param name="category" value="mvno-liiv-m" />
+			<param name="errorCodeType" value="action" />		
+		</appender>
+	</appender>
+	
+	
+    <logger name="com.zaxxer.hikari.HikariConfig" level="error"/>
+    <logger name="com.zaxxer.hikari.pool.PoolBase" level="ERROR"/>
+    <logger name="com.zaxxer.hikari.pool.HikariPool" level="ERROR"/>
+    <logger name="com.zaxxer.hikari.HikariDataSource" level="ERROR"/>
+    <logger name="net.sf.log4jdbc" level="info" additivity="true" />
+    <logger name="org.mybatis" level="error" />
+    <logger name="jdbc" level="off" />
+    <logger name="jdbc.sqlonly" level="off" />
+    <logger name="jdbc.sqltiming" level="debug" />
+    <logger name="jdbc.audit" level="off" />
+    <logger name="jdbc.resultset" level="off" />
+    <logger name="jdbc.resultsettable" level="debug" />
+    <logger name="jdbc.connection" level="error" /> 
+
+ <!-- 
+    <root level="${LOG_LEVEL:info}" additivity="false">
+        <appender-ref ref="console" />
+        <appender-ref ref="logNclash-logger" />
+    </root>
+-->
+    <root level="DEBUG" additivity="false">
+        <appender-ref ref="console" />
+    </root>
+    
+</configuration>
