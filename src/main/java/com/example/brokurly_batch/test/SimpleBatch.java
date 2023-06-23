@@ -36,7 +36,7 @@ public class SimpleBatch {
     public Step simpleStep1(@Value("#{jobParameters['param']}") String param) {
         return stepBuilderFactory.get("simpleStep1")
                 .tasklet((contribution, chunkContext) -> {
-                    log.info(">>>>> This is Step1");
+                    log.info(">>>>> This is  Step1 ");
                     log.info(">>>>> param : " + param);
                     return RepeatStatus.FINISHED;
                 })
