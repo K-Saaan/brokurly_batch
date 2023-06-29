@@ -1,4 +1,4 @@
-package com.example.brokurly_batch.test;
+package brokurly.batch.test;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,8 +21,6 @@ import org.springframework.context.annotation.Scope;
 public class SimpleBatch {
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;
-
-
 
     @Bean(name = "simpleJob")
     public Job simpleJob() {

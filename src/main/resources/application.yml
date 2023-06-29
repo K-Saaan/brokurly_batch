@@ -1,12 +1,7 @@
 spring:
   profiles:
     default: local
-  datasource:
-    hikari:
-      jdbc-url: jdbc:mysql://brokurly-mysql.cibbkywj3asc.ap-northeast-2.rds.amazonaws.com:3306/co?useUnicode=true\&characterEncoding=utf8&useSSL=false&serverTimezone=UTC&autoReconnection=true
-      username: root
-      password: akzptzjffl1!
-      driver-class-name: com.mysql.cj.jdbc.Driver
+    include: local
 
   jpa:
     database:
@@ -22,3 +17,22 @@ spring:
       hibernate:
         format_sql:
           true
+  spring:
+    config:
+      activate:
+        on-profile:
+---
+
+spring:
+  profiles:
+    default: local
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+
+---
