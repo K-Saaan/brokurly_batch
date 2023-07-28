@@ -1,15 +1,18 @@
 package brokurly.batch.common;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Date;
 import java.util.Locale;
 
 public class DateUtil {
 
-	
 	/**
      * yyyy-MM-dd HH:mm:ss 형태의 날짜를 문자열로 변환.
      * @return String 변환문자열
@@ -133,8 +136,8 @@ public class DateUtil {
 	/**
 	 * yyyyMMddHHmmss 형태의 날짜가 같은지 비교
 	 * @return boolean
-	 * @param date1
-	 * @param date2
+	 * @param s1
+	 * @param s2
 	 * @return
 	 */
 	public static boolean compareDate(String s1, String s2) {
@@ -153,5 +156,29 @@ public class DateUtil {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * yyyyMMdd 형태의 날짜 차이 일수 계산
+	 * @return int
+	 * @param d1
+	 * @param d2
+	 * @return
+	 */
+	public static int compareDay(String d1, String d2) {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+
+		Date date1 = null;
+		Date date2 = null;
+		try {
+			date1 = formatter.parse(d1);
+			date2 = formatter.parse(d2);
+		} catch (ParseException e) {
+			return 0;
+		}
+		long diffSec = (date2.getTime() - date1.getTime()) / 1000;
+		long diff = diffSec / (24*60*60);
+
+		return Integer.parseInt(String.valueOf(diff));
 	}
 }

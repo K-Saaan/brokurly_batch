@@ -2,7 +2,6 @@ spring:
   profiles:
     default: local
     include: local
-
   jpa:
     database:
       mysql
@@ -17,10 +16,11 @@ spring:
       hibernate:
         format_sql:
           true
-  spring:
-    config:
-      activate:
-        on-profile:
+  batch:
+    job:
+      names: ${job.name:NONE}
+
+
 ---
 
 spring:

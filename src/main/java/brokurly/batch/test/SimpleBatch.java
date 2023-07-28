@@ -2,6 +2,8 @@ package brokurly.batch.test;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.*;
@@ -14,6 +16,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
+import org.springframework.scheduling.annotation.Scheduled;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -25,17 +28,16 @@ public class SimpleBatch {
     @Bean(name = "simpleJob")
     public Job simpleJob() {
         return jobBuilderFactory.get("simpleJob")
-                .start(simpleStep1(null))
+                .start(simpleStep1())
                 .build();
     }
 
     @Bean
     @JobScope
-    public Step simpleStep1(@Value("#{jobParameters['param']}") String param) {
+    public Step simpleStep1() {
         return stepBuilderFactory.get("simpleStep1")
                 .tasklet((contribution, chunkContext) -> {
                     log.info(">>>>> This is  Step1 ");
-                    log.info(">>>>> param : " + param);
                     return RepeatStatus.FINISHED;
                 })
                 .build();
