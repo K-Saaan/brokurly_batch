@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Entity
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Table(name = "reserve_amt_info", catalog="cs")
 public class ReserveEntity {
     @Id

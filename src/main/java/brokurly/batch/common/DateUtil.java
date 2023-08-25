@@ -79,6 +79,19 @@ public class DateUtil {
 	}
 
 	/**
+	 * YYYYMM 형태의 날짜를 문자열로 변환.
+	 * 현재 년월 문자열로 반환
+	 * @return String 변환문자열
+	 */
+	public static String getTodayYYYYMM() {
+		SimpleDateFormat formatter = new SimpleDateFormat ( "yyyyMM", Locale.KOREA );
+		Date currentTime = new Date ();
+		String dTime = formatter.format (currentTime);
+		System.out.println("today yyyymm : " + dTime);
+		return dTime;
+	}
+
+	/**
 	 * YYYY 형태의 문자열로 반환.
 	 * @return String 변환문자열
 	 */

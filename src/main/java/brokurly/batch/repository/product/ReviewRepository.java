@@ -12,9 +12,5 @@ import java.util.List;
 
 @Repository
 public interface ReviewRepository extends JpaRepository<ReviewEntity, Integer>, JpaSpecificationExecutor<ReviewEntity> {
-    ReviewEntity findByReviewSeqNo(int reviewSeqNo);
 
-    @Modifying
-    @Query("delete from ReviewEntity r where r.reviewSeqNo in :reviewSeqId")
-    void deleteAllByIds(@Param("reviewSeqId") List<Integer> reviewSeqId);
 }

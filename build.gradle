@@ -22,7 +22,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-batch'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-    implementation 'org.springframework.boot:spring-boot-starter-quartz:2.7.5'
+//    implementation 'org.springframework.boot:spring-boot-starter-quartz:2.7.5'
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
     implementation 'mysql:mysql-connector-java'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -31,7 +31,9 @@ dependencies {
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'com.h2database:h2'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+//    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    implementation group: 'org.bgee.log4jdbc-log4j2', name: 'log4jdbc-log4j2-jdbc4.1', version: '1.16'
+    compileOnly 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4:1.16'
 }
 
 tasks.named('test') {
