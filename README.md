@@ -1,7 +1,7 @@
 # 1. 프로젝트 소개
 #### 프로젝트명 브로컬리 - 신선식품 관리 어드민페이지
 #### 프로젝트 소개
-###### [어드민에서의 일괄 처리를 위한 Batch 프로세스](https://github.com/K-Saaan/brokurly_admin)
+###### [어드민](https://github.com/K-Saaan/brokurly_admin) 에서의 일괄 처리를 위한 Batch 프로세스
 ###### 쿠폰에 대한 상태 변경이나 적립금 지급과 같은 일괄 처리 수행
 <div align=center>
 
